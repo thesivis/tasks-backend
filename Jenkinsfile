@@ -57,11 +57,11 @@ pipeline {
 		sh 'curl -I http://172.17.0.1:8001/todo'
 	    }
 	}
-	post {
-            always {
-                junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
-                archiveArtifacts artifacts: 'target/tasks-backend.jar', followSymlinks: false, onlyIfSuccessful: true
-            }
+    }
+    post {
+        always {
+	    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+	    archiveArtifacts artifacts: 'target/tasks-backend.jar', followSymlinks: false, onlyIfSuccessful: true
     	}
     }
 }
